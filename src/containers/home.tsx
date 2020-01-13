@@ -11,16 +11,17 @@ class Home extends Component {
   render() {
     return (
       <ConfigProvider locale={zhCN}>
-        <div className="za-time-fm-container">
+        <>
           <TabList></TabList>
-          <ControllBar></ControllBar>
-        </div>
+          {/* <ControllBar></ControllBar> */}
+        </>
       </ConfigProvider>
     )
   }
 }
 
-ReactDOM.render(
-  <Home></Home>,
-  document.querySelectorAll('.app')[0]
-);
+// ReactDOM.render(
+//   <Home></Home>,
+//   document.querySelectorAll('.app')[0]
+// );
+export default Home;

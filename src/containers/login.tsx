@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Chat extends Component {
+class Login extends Component {
   render() {
     return (
       <>
-        <div>chat page</div>
+        <div>登录页</div>
       </>
     )
   }
 }
 
-export default Chat;
+export default Login;

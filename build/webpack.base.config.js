@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: {
-        'app': './src/containers/home.tsx'
+        'app': './src/index.tsx'
     },
     output: {
         filename: './dist/[name].[chunkhash:8].js'
