@@ -3,8 +3,6 @@ import ReactDom from 'react-dom';
 import getRouter from './router/index';
 
 ReactDom.render(
-  <div>
-    {getRouter()}
-  </div>,
+  getRouter(),
   document.querySelectorAll('.app')[0]
 );

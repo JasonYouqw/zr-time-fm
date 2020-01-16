@@ -11,16 +11,31 @@ import '../assets/scss/common.scss';
 const HomeView = (props: any) => {
   const pathName = props.location;
   return (
-    <div>
+    <>
       <Route path="/home" component={loadable(() => import('../containers/home'))}></Route>
       <Route path="/chat" component={loadable(() => import('../containers/chat'))}></Route>
-      <Route path="/settings" component={loadable(() => import('../containers/setings'))}></Route>
+      <Route path="/settings" component={loadable(() => import('../containers/settings'))}></Route>
       <Route component={loadable(() => import('../containers/controllBar'))}></Route>
-    </div>
+    </>
   )
 }
 
+const initScale = () => {
+  const baseSize = 28;
+  const setSize = () => {
+    const scale = document.documentElement.clientWidth / 750;
+    document.documentElement.style.fontSize = `${baseSize * window.Math.min(scale, 2)}px`;
+  }
+  setSize();
+  window.onresize = () => {
+    window.setTimeout(() => {
+      setSize();
+    }, 10);
+  };
+}
+
 const getRouter = () => {
+  initScale();
   return (
     <HashRouter>
       <div className="za-time-fm-container">

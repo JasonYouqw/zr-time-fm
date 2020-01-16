@@ -1,4 +1,6 @@
-@import './config/_reset.scss';
+@import './config/reset.scss';
+@import './config/mixin.scss';
+@import './config/base.scss';
 
 $theme-color: #1890ff;
 .za-time-fm-container {
