@@ -12,14 +12,20 @@ const HomeView = (props: any) => {
   const pathName = props.location;
   return (
     <>
-      <Route path="/home" component={loadable(() => import('../containers/home'))}>
-        {/* <Route path="/commend" component={loadable(() => import('../components/infoMoments/commend'))}></Route>
-        <Route path="/community" component={loadable(() => import('../components/infoMoments/community'))}></Route>
-        <Route path="/personel" component={loadable(() => import('../components/infoMoments/personel'))}></Route> */}
-      </Route>
+      <Route path="/home" component={loadable(() => import('../containers/home'))}></Route>
       <Route path="/chat" component={loadable(() => import('../containers/chat'))}></Route>
+      <Route path="/publish" component={loadable(() => import('../containers/publish'))}></Route>
       <Route path="/settings" component={loadable(() => import('../containers/settings'))}></Route>
       <Route component={loadable(() => import('../containers/controllBar'))}></Route>
+    </>
+  )
+}
+
+const ChatView = (props: any) => {
+  const pathName = props.location;
+  return (
+    <>
+      <Route path="/chat/"></Route>
     </>
   )
 }

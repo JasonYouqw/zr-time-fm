@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Tabs } from 'antd';
+import Commend from '../components/infoMoments/commend';
+import Community from '../components/infoMoments/community';
+import Personel from '../components/infoMoments/personel';
 
 const { TabPane } = Tabs;
 class TabList extends Component {
@@ -7,13 +10,13 @@ class TabList extends Component {
     return (
       <Tabs>
         <TabPane tab="推荐" key="commend">
-          commend
+          <Commend></Commend>
         </TabPane>
         <TabPane tab="社区" key="community">
-          community
+          <Community></Community>
         </TabPane>
         <TabPane tab="朋友圈" key="personel">
-          personel
+          <Personel></Personel>
         </TabPane>
       </Tabs>
     )

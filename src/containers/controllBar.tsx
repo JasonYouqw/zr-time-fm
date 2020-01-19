@@ -14,6 +14,9 @@ class ControllBar extends Component {
   toChat() {
     window.location.href = '#/chat';
   }
+  toPublish() {
+    window.location.href = '#/publish';
+  }
   toSetting() {
     window.location.href = '#/settings';
   }
@@ -27,6 +30,10 @@ class ControllBar extends Component {
         <div className="controll-bar-item" onClick={this.toChat}>
           <Icon className="bar-icon" type="message" />
           <div>聊天</div>
+        </div>
+        <div className="controll-bar-item" onClick={this.toPublish}>
+          <Icon className="bar-icon" type="fire" />
+          <div>发布</div>
         </div>
         <div className="controll-bar-item" onClick={this.toSetting}>
           <Icon className="bar-icon" type="user" />
