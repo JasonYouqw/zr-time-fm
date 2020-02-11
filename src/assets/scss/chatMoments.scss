@@ -1,4 +1,50 @@
 @import './common.scss';
 .za-time-fm-chatMoment {
+  .chat-moment {
+    .chat-atavar {
+      height: rem(60);
+      width: rem(60);
+    }
+  
+    .chat-content {
+      padding: rem(10) rem(20);
+    }
+  }
+  
+}
 
+.zr-time-fm-chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .chat-window-header {
+    height: rem(66);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chat-window-infolist {
+    background-color: #ffffff;
+    border-top: 1px solid #DEDEDE;
+    flex: 1;
+  }
+  .chat-window-bar {
+    border-top: 1px solid #DEDEDE;
+    height: rem(66);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chat-window-inputarea {
+    background-color: #ffffff;
+    border-top: 1px solid #DEDEDE;
+    height: rem(160);
+  }
+  .chat-window-submit {
+    border-top: 1px solid #DEDEDE;
+    height: rem(66);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }

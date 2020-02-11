@@ -52,6 +52,7 @@ const getRouter = () => {
         <Switch>
           <Route path="/login" component={loadable(() => import('../containers/login'))}></Route>
           <Route path="/register" component={loadable(() => import('../containers/register'))}></Route>
+          <Route path="/chatWindow" component={loadable(() => import('../components/chatMoments/chatWindow'))}></Route>
           <Route path="/" component={HomeView}></Route>
         </Switch>
       </div>

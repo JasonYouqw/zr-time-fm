@@ -1,26 +1,54 @@
 import React, { Component } from 'react';
 import {
-  List
-} from 'antd-mobile';
-
-const ChatItem = List.Item;
+  Cell
+} from 'zarm';
+import '../../assets/scss/chatMoments.scss';
 // 可收缩
 class ChatItemList extends Component {
+  toChatWindow = () => {
+    window.location.href = '#/chatWindow'
+  }
   getChatItem = () => {
     return (
-      <div>
-        <ChatItem>
-          <div>头像</div>
-          <div>内容</div>
-          <div>时间</div>
-        </ChatItem>
+      <div className="za-time-fm-chatMoment">
+        <Cell onClick={this.toChatWindow} className="chat-moment">
+          <div className="chat-atavar">头像</div>
+          <div className="chat-content">
+            <p className="chat-content-item">内容</p>
+            <p className="chat-content-time">时间</p>
+          </div>
+        </Cell>
+        <Cell onClick={this.toChatWindow} className="chat-moment">
+          <div className="chat-atavar">头像</div>
+          <div className="chat-content">
+            <p className="chat-content-item">内容</p>
+            <p className="chat-content-time">时间</p>
+          </div>
+        </Cell>
+        <Cell onClick={this.toChatWindow} className="chat-moment">
+          <div className="chat-atavar">头像</div>
+          <div className="chat-content">
+            <p className="chat-content-item">内容</p>
+            <p className="chat-content-time">时间</p>
+          </div>
+        </Cell>
+        <Cell onClick={this.toChatWindow} className="chat-moment">
+          <div className="chat-atavar">头像</div>
+          <div className="chat-content">
+            <p className="chat-content-item">内容</p>
+            <p className="chat-content-time">时间</p>
+          </div>
+        </Cell>
       </div>
     )
   }
   render() {
     return (
-      <div>聊天信息列表</div>,
-      getChatItem()
+      <>
+        <div>
+          {this.getChatItem()}
+        </div>
+      </>
     )
   }
 }

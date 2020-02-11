@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
-import { Tabs } from 'antd';
+import { Tabs } from 'zarm';
 import Commend from '../components/infoMoments/commend';
 import Community from '../components/infoMoments/community';
 import Personel from '../components/infoMoments/personel';
 
-const { TabPane } = Tabs;
+const { Panel } = Tabs;
+
 class TabList extends Component {
+  state = {
+    tabValue: 0
+  }
+  onChange = (tabValue: any) => {
+    console.log(`tabValue:${tabValue}`);
+    this.setState({
+      tabValue,
+    });
+  }
   render() {
     return (
       <Tabs>
-        <TabPane tab="推荐" key="commend">
+        <Panel title="推荐" key="commend">
           <Commend></Commend>
-        </TabPane>
-        <TabPane tab="社区" key="community">
+        </Panel>
+        <Panel title="社区" key="community">
           <Community></Community>
-        </TabPane>
-        <TabPane tab="朋友圈" key="personel">
+        </Panel>
+        <Panel title="朋友圈" key="personel">
           <Personel></Personel>
-        </TabPane>
+        </Panel>
       </Tabs>
     )
   }
