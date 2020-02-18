@@ -1,11 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
     entry: {
         'app': './src/index.tsx'
     },
     output: {
-        filename: './dist/[name].[chunkhash:8].js'
+        filename: './[name].js',
+        publicPath: '/dist/'
     },
     resolve: {
         extensions: ['.js', '.ts', '.tsx']
@@ -20,21 +23,48 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.scss$/,
+                test: /\.(scss)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader']
             },
             {
-                test: /\.css$/,loader: "style-loader!css-loader"
+                test: /\.(css)$/,
+                use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.(eot|woff|woff2|ttf)/,
-                loader: "url-loader?limit=30000&name=fonts/[hash:8].[name].[ext]"
+                use: [
+                    {
+                        loader: "url-loader?limit=30000&name=fonts/[hash:8].[name].[ext]"
+                    }
+                ]
             },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/, //
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10000,
+                        }
+                    }
+                ]
+            },
+            {
+                test:/\.(htm|html)$/,
+                use: 'raw-loader'
+            }
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': "development",
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            template: './index.html'
+            filename: 'index.html',
+            template: 'index.html',
+            inject: true,
         })
     ],
     optimization: {

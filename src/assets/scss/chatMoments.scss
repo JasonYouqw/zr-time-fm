@@ -1,13 +1,40 @@
 @import './common.scss';
 .za-time-fm-chatMoment {
   .chat-moment {
+    margin-top: rem(20);
     .chat-atavar {
+      margin-right: rem(20);
       height: rem(60);
       width: rem(60);
+      background-image: url(../imgs/atavar_default.jpg);
+      background-size: rem(60) rem(60);
     }
   
     .chat-content {
       padding: rem(10) rem(20);
+      position: relative;
+      background-color: #528B8B;
+      width: 100%;
+      border: rem(1) solid #4F4F4F;
+      border-radius: rem(8);
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 0;
+        border-left: 0 solid #4F4F4F;;
+      }
+      .chat-content-item {
+        font-size: rem(28);
+      }
+      .chat-content-time {
+        color: #4F4F4F;
+        font-size: rem(24);
+        font-weight: 500;
+        margin-top: rem(10);
+      }
     }
   }
   
