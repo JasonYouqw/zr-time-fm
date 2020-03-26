@@ -12,6 +12,8 @@ const app = new Koa();
 // 初始化webpack
 const config = require('./build/webpack.base.config.js');
 const compiler = Webpack(config);
+// const devMiddleware = require('./build/webpack-dev-middleware.js');
+// const hotMiddleware = require('./build/webpack-hot-middleware.js');
 if (module.hot) {
   module.hot.accept()
 }
