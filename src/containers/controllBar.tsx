@@ -9,16 +9,16 @@ class ControllBar extends Component {
     super(props);
   }
   toHome() {
-    window.location.href = '#/home';
+    window.location.href = '/home';
   }
   toChat() {
-    window.location.href = '#/chat';
+    window.location.href = '/chat';
   }
   toPublish() {
-    window.location.href = '#/publish';
+    window.location.href = '/publish';
   }
   toSetting() {
-    window.location.href = '#/settings';
+    window.location.href = '/settings';
   }
   render() {
     return (

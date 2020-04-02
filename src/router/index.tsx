@@ -1,12 +1,19 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
   HashRouter,
-  Route,
+  // Route,
   Switch
 } from 'react-router-dom';
+import {Router, Route} from 'react-router';
+import {
+  Provider,
+} from 'react-redux';
+import { createBrowserHistory } from 'history';
 import loadable from '@loadable/component';
 import '../assets/scss/common.scss';
+
+import store from '../redux/Store';
 
 const HomeView = (props: any) => {
   const pathName = props.location;
@@ -44,19 +51,30 @@ const initScale = () => {
   };
 }
 
+const history = createBrowserHistory();
+
 const getRouter = () => {
   initScale();
   return (
-    <HashRouter>
-      <div className="za-time-fm-container">
-        <Switch>
-          <Route path="/login" component={loadable(() => import('../containers/login'))}></Route>
-          <Route path="/register" component={loadable(() => import('../containers/register'))}></Route>
-          <Route path="/chatWindow" component={loadable(() => import('../components/chatMoments/chatWindow'))}></Route>
-          <Route path="/" component={HomeView}></Route>
-        </Switch>
-      </div>
-    </HashRouter>
+    <Provider store={store}>
+      <Router history={history}>
+        <div>测试登录</div>
+        <Route path="/login" component={loadable(() => import('../containers/login'))}></Route>
+        <Route path="/register" component={loadable(() => import('../containers/register'))}></Route>
+        <Route path="/chatWindow" component={loadable(() => import('../components/chatMoments/chatWindow'))}></Route>
+        <Route path="/" component={HomeView}></Route>
+      </Router>
+    </Provider>
+    // <HashRouter>
+    //   <div className="za-time-fm-container">
+    //     <Switch>
+    //       <Route path="/login" component={loadable(() => import('../containers/login'))}></Route>
+    //       <Route path="/register" component={loadable(() => import('../containers/register'))}></Route>
+    //       <Route path="/chatWindow" component={loadable(() => import('../components/chatMoments/chatWindow'))}></Route>
+    //       <Route path="/" component={HomeView}></Route>
+    //     </Switch>
+    //   </div>
+    // </HashRouter>
   );
 }
 

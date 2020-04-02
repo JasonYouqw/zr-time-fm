@@ -5,8 +5,15 @@ import Community from '../components/infoMoments/community';
 import Personel from '../components/infoMoments/personel';
 
 const { Panel } = Tabs;
+interface Props {
 
-class TabList extends Component {
+}
+
+interface State {
+
+}
+
+class TabList extends Component<Props, State> {
   state = {
     tabValue: 0
   }
@@ -19,7 +26,7 @@ class TabList extends Component {
   render() {
     return (
       <Tabs>
-        <Panel title="推荐" key="commend">
+        <Panel title={'推荐1111'} key="commend">
           <Commend></Commend>
         </Panel>
         <Panel title="社区" key="community">
