@@ -63,7 +63,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'index.html',
+            template: path.resolve(process.cwd(), './index.html'),
             inject: true,
         })
     ],

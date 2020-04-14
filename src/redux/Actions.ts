@@ -4,13 +4,8 @@ import axios from '../utils/axios';
 const getProduct = async () => {
   // 请求数据
   await axios.axiosRequest({
-    url: '/api/productmarketh5/product/v1/getProduct',
-    method: 'post',
-    data: {
-      "bizNo": "INST190889098019",
-      "productCode": "PRD190819898016",
-      "bizType": "1"
-    },
+    url: '/mock/f/getLoginInfo',
+    method: 'get',
   }).then((res: any) => {
     console.log(`ret: ${JSON.stringify(res)}`);
   }).catch((error: string) => {

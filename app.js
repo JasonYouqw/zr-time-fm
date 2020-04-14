@@ -1,12 +1,11 @@
 const Koa = require('koa');
 const Webpack = require('webpack');
+const path = require('path');
 const { devMiddleware, hotMiddleware } = require('koa-webpack-middleware');
-// const proxyMiddle = require('http-proxy-middleware');
 const config = require('./confg');
 const proxyMiddle = require('./server/utils/proxyMiddle');
-const WebpackDevServer = require('webpack-dev-server');
-const KoaRouter = require('koa-router');
-const socketIo = require('socket.io');
+// const router = require('./server/router');
+const koaEjs = require('koa-ejs');
 const fs = require('fs');
 
 // 创建http服务
@@ -17,8 +16,6 @@ global.DEPLOY_ENV = process.env.DEPLOY_ENV;
 // 初始化webpack
 const webpackconfig = require('./build/webpack.base.config.js');
 const compiler = Webpack(webpackconfig);
-// const devMiddleware = require('./build/webpack-dev-middleware.js');
-// const hotMiddleware = require('./build/webpack-hot-middleware.js');
 if (module.hot) {
   module.hot.accept()
 }
@@ -37,28 +34,41 @@ app.use(hotMiddleware(compiler, {
 // http api proxy
 proxyMiddle(app, config.dev.proxyTable);
 
-// render index.html
-app.use(async (ctx, next) => {
-  await next();
-  ctx.response.type = 'text/html';
-  const indexFile = await fs.readFileSync('./index.html');
-  // console.log(`indexFile:${indexFile}`);
-  ctx.response.body = indexFile;
-})
+// ejs
+koaEjs(app, {
+  root: path.join(__dirname, 'server/view'),
+  layout: false,
+  viewExt: 'html',
+  cache: false,
+  debug: false
+});
 
-// socket
-// http://127.0.0.1:8080/#/chat
-// socket.io 连接
-// const io = socketIo(app);
-// io.on('connection', (socket) => {
-//   console.log('socket客户端已经连接');
-//   socket.on('test news event', (msg) => {
-//     console.log(`msg: ${msg}`);
-//     socket.emit('news', {
-//       server: msg
-//     });
-//   });
-// });
+// router
+const router = require('koa-router')();
+
+router.get('/mock/f/getLoginInfo', async (ctx, next) => {
+  console.log('enter into getLoginInfo');
+  ctx.body = "首rrr页";
+  next();
+});
+
+router.get('/', async (ctx, next) => {
+  await ctx.render('index', {
+    title: '登录',
+    body: 'login page'
+  });
+  next();
+});
+app.use(router.routes());
+app.use(router.allowedMethods());
+
+// render index.html
+// app.use(async (ctx, next) => {
+//   await next();
+//   ctx.response.type = 'text/html';
+//   const indexFile = await fs.createReadStream('./index.html');
+//   ctx.response.body = indexFile;
+// })
 
 // 监听http服务
 app.listen(8080, () => {
