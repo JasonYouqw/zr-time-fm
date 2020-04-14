@@ -23,7 +23,7 @@ const HomeView = (props: any) => {
       <Route path="/chat" component={loadable(() => import('../containers/chat'))}></Route>
       <Route path="/publish" component={loadable(() => import('../containers/publish'))}></Route>
       <Route path="/settings" component={loadable(() => import('../containers/settings'))}></Route>
-      <Route component={loadable(() => import('../containers/controllBar'))}></Route>
+      {/* <Route component={loadable(() => import('../containers/controllBar'))}></Route> */}
     </>
   )
 }

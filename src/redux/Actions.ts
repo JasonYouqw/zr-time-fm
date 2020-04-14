@@ -1,21 +1,21 @@
 import { QUERY_PRODUCT_INFO, QUERY_INSURE_INFO, SET_KEFU_VISIBLE, CHECK_INSURE } from './ActionTypes';
-// import axios from './utils/axios';
+import axios from '../utils/axios';
 
 const getProduct = async () => {
   // 请求数据
-  // await axios.axiosRequest({
-  //   url: '/api/productmarketh5/product/v1/getProduct',
-  //   method: 'post',
-  //   data: {
-  //     "bizNo": "INST190889098019",
-  //     "productCode": "PRD190819898016",
-  //     "bizType": "1"
-  //   },
-  // }).then((res) => {
-  //   console.log(`ret: ${JSON.stringify(res)}`);
-  // }).catch((error) => {
-  //   console.log(`error:${JSON.stringify(error)}`);
-  // });
+  await axios.axiosRequest({
+    url: '/api/productmarketh5/product/v1/getProduct',
+    method: 'post',
+    data: {
+      "bizNo": "INST190889098019",
+      "productCode": "PRD190819898016",
+      "bizType": "1"
+    },
+  }).then((res: any) => {
+    console.log(`ret: ${JSON.stringify(res)}`);
+  }).catch((error: string) => {
+    console.log(`error:${JSON.stringify(error)}`);
+  });
 };
 
 export const queryProductInfoAction = ({productCode = ''}) => {

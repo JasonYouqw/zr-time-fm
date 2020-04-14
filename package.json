@@ -36,6 +36,8 @@
     "history": "^4.10.1",
     "koa": "^2.11.0",
     "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa2-connect": "^1.0.2",
     "moment": "^2.24.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -45,7 +47,7 @@
     "redux": "^4.0.5",
     "socket.io": "^2.3.0",
     "typescript": "^3.7.4",
-    "zarm": "2.0.0-alpha.38"
+    "zarm": "^2.0.0-alpha.38"
   },
   "devDependencies": {
     "@types/react": "^16.9.17",
@@ -56,6 +58,7 @@
     "css-loader": "^3.4.2",
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "^4.0.0-beta.3",
+    "http-proxy-middleware": "^1.0.3",
     "koa-webpack-middleware": "^1.0.7",
     "node-sass": "^4.13.0",
     "nodemon": "^2.0.2",
