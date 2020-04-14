@@ -4,7 +4,7 @@ const path = require('path');
 const { devMiddleware, hotMiddleware } = require('koa-webpack-middleware');
 const config = require('./confg');
 const proxyMiddle = require('./server/utils/proxyMiddle');
-// const router = require('./server/router');
+const router = require('./server/router');
 const koaEjs = require('koa-ejs');
 const fs = require('fs');
 
@@ -44,21 +44,6 @@ koaEjs(app, {
 });
 
 // router
-const router = require('koa-router')();
-
-router.get('/mock/f/getLoginInfo', async (ctx, next) => {
-  console.log('enter into getLoginInfo');
-  ctx.body = "首rrr页";
-  next();
-});
-
-router.get('/', async (ctx, next) => {
-  await ctx.render('index', {
-    title: '登录',
-    body: 'login page'
-  });
-  next();
-});
 app.use(router.routes());
 app.use(router.allowedMethods());
 
@@ -68,7 +53,7 @@ app.use(router.allowedMethods());
 //   ctx.response.type = 'text/html';
 //   const indexFile = await fs.createReadStream('./index.html');
 //   ctx.response.body = indexFile;
-// })
+// });
 
 // 监听http服务
 app.listen(8080, () => {

@@ -14,7 +14,6 @@ const getProduct = async () => {
 };
 
 export const queryProductInfoAction = ({productCode = ''}) => {
-  console.log('getdddd');
   getProduct();
   return {
     type: QUERY_PRODUCT_INFO,
