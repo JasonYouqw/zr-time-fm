@@ -6,6 +6,7 @@ const config = require('./confg');
 const proxyMiddle = require('./server/utils/proxyMiddle');
 const router = require('./server/router');
 const koaEjs = require('koa-ejs');
+const koaStatic = require('koa-static');
 const fs = require('fs');
 
 // 创建http服务
@@ -42,6 +43,9 @@ koaEjs(app, {
   cache: false,
   debug: false
 });
+
+// static file path
+app.use(koaStatic('./server/mock'));
 
 // router
 app.use(router.routes());

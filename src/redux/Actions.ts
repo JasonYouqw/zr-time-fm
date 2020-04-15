@@ -4,10 +4,10 @@ import axios from '../utils/axios';
 const getProduct = async () => {
   // 请求数据
   await axios.axiosRequest({
-    url: '/mock/f/getLoginInfo',
+    url: '/data/login.json',
     method: 'get',
   }).then((res: any) => {
-    console.log(`ret: ${JSON.stringify(res)}`);
+    console.log(`ret: ${JSON.stringify(res.data)}`);
   }).catch((error: string) => {
     console.log(`error:${JSON.stringify(error)}`);
   });
